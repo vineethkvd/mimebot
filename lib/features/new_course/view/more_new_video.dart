@@ -71,9 +71,27 @@ class _NewlyAddedVideoState extends State<NewlyAddedVideo> {
                 },
                 decoration: InputDecoration(
                   hintText: 'Search videos...',
+                  fillColor: const Color(0xfff5f5f5),
+                  hintStyle: const TextStyle(
+                    fontSize: 12,
+                    fontFamily: "poppinsRegular",
+                    color: Colors.black,
+                  ),
                   prefixIcon: Icon(Icons.search),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                    borderSide: const BorderSide(color: Color(0xffd9d9d9)),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                    borderSide: const BorderSide(color: Color(0xffd9d9d9)),
+                  ),
+                  errorBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                    borderSide: const BorderSide(color: Colors.red),
+                  ),
                   border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0),
+                    borderRadius: BorderRadius.circular(15.0),
                   ),
                 ),
               ),

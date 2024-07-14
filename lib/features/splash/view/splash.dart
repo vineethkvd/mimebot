@@ -7,16 +7,17 @@ import 'package:get/get.dart';
 import '../../../core/helpers/cache_helper/cache_helper.dart';
 import '../../../core/utils/configs/styles/colors.dart';
 import '../../../core/utils/shared/constants/assets_pathes.dart';
+import '../../login/view/login_page.dart';
 import '../../navbar/view/navbar_screen.dart';
 
-class SplashScreen extends StatefulWidget {
-  const SplashScreen({super.key});
+class SplashPage extends StatefulWidget {
+  const SplashPage({super.key});
 
   @override
-  State<SplashScreen> createState() => _SplashScreenState();
+  State<SplashPage> createState() => _SplashPageState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
+class _SplashPageState extends State<SplashPage> {
   void initState() {
     // TODO: implement initState
     super.initState();
@@ -26,12 +27,12 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   void checkLoginStatus() async {
-    final storedValue = await CacheHelper.getData('userId');
+    final storedValue = await CacheHelper.getData('regId');
     print(storedValue);
     if (storedValue != null && storedValue.isNotEmpty) {
       Get.offAll(const NavBar());
     } else {
-      Get.offAll(const NavBar());
+      Get.offAll(const LoginPage());
     }
   }
 

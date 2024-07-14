@@ -53,10 +53,11 @@ class _CategoryPageState extends State<CategoryPage> {
         ),
       ),
       body: Container(
+        color: Colors.white,
         child: Column(
           children: [
             Padding(
-              padding: EdgeInsets.all(10.0),
+              padding: const EdgeInsets.all(10.0),
               child: TextField(
                 controller: searchController,
                 onChanged: (value) {
@@ -64,9 +65,27 @@ class _CategoryPageState extends State<CategoryPage> {
                 },
                 decoration: InputDecoration(
                   hintText: 'Search categories...',
+                  fillColor: const Color(0xfff5f5f5),
+                  hintStyle: const TextStyle(
+                    fontSize: 12,
+                    fontFamily: "poppinsRegular",
+                    color: Colors.black,
+                  ),
                   prefixIcon: Icon(Icons.search),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                    borderSide: const BorderSide(color: Color(0xffd9d9d9)),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                    borderSide: const BorderSide(color: Color(0xffd9d9d9)),
+                  ),
+                  errorBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                    borderSide: const BorderSide(color: Colors.red),
+                  ),
                   border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0),
+                    borderRadius: BorderRadius.circular(15.0),
                   ),
                 ),
               ),

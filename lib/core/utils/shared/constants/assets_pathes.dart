@@ -6,4 +6,6 @@ class AssetsPathes {
   // images pathes
   static const String appLogo = '${images}app_logo.svg';
   static const String appBarLogo = '${images}app_bar_logo.png';
+  static const String botImage = '${images}bot_image.jpg';
+
 }

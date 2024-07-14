@@ -6,5 +6,10 @@ class ApiEndPoints {
   static const String course = "course.php";
   static const String lesson = "lesson.php";
   static const String newCourses = "new_courses.php";
+  static const String register = "register.php";
+  static const String checkOtp = "checkotp.php";
+  static const String login = "login.php";
+  static const String notifications = "notification.php";
+  static const String companyInfo = "company_info.php";
 
 }
