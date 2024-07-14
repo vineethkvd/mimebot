@@ -11,5 +11,8 @@ class ApiEndPoints {
   static const String login = "login.php";
   static const String notifications = "notification.php";
   static const String companyInfo = "company_info.php";
+  static const String profile = "profile.php";
+  static const String editProfile = "edit_profile.php";
+  static const String allCourses = "allcourses.php";
 
 }

@@ -78,8 +78,8 @@ class RegistrationController extends GetxController {
             RegistrationModel.fromJson(json.decode(responseData));
         loading.value = false;
         CustomSnackBar.showCustomSnackBar(
-          title: 'Registration successful',
-          message: registrationModel.value.message.toString(),
+          title: 'Successful',
+          message: "Please verify otp",
         );
       }
       if (response.statusCode == 400) {

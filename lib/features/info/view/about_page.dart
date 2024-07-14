@@ -24,37 +24,42 @@ class _AboutPageState extends State<AboutPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        leading: IconButton(
-          onPressed: () {
-            Get.back();
-          },
-          icon: Icon(Icons.arrow_back, size: 25, color: Colors.white),
+    return Container(
+      color: AppColor.primaryColor,
+      child: SafeArea(
+        child: Scaffold(
+          appBar: AppBar(
+            automaticallyImplyLeading: false,
+            leading: IconButton(
+              onPressed: () {
+                Get.back();
+              },
+              icon: Icon(Icons.arrow_back, size: 25, color: Colors.white),
+            ),
+            elevation: 0,
+            backgroundColor: AppColor.primaryColor,
+            centerTitle: true,
+            title: Text(
+              "About us",
+              style: TextStyle(
+                  fontSize: 18.sp,
+                  color: AppColor.whiteColor,
+                  fontFamily: "poppinsSemiBold"),
+            ),
+          ),
+          body: Container(
+            height: Get.height,
+            width: Get.width,
+            color: AppColor.whiteColor,
+            child: Obx(() {
+              if (_controller.isLoading.value) {
+                return _buildShimmerEffect();
+              } else {
+                return _buildContent();
+              }
+            }),
+          ),
         ),
-        elevation: 0,
-        backgroundColor: AppColor.primaryColor,
-        centerTitle: true,
-        title: Text(
-          "Terms and condition",
-          style: TextStyle(
-              fontSize: 18.sp,
-              color: AppColor.whiteColor,
-              fontFamily: "poppinsSemiBold"),
-        ),
-      ),
-      body: Container(
-        height: Get.height,
-        width: Get.width,
-        color: AppColor.whiteColor,
-        child: Obx(() {
-          if (_controller.isLoading.value) {
-            return _buildShimmerEffect();
-          } else {
-            return _buildContent();
-          }
-        }),
       ),
     );
   }

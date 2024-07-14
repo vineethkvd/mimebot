@@ -5,6 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import '../../../core/utils/configs/styles/colors.dart';
 import '../../../core/utils/shared/constants/assets_pathes.dart';
+import '../../drawer/view/drawer_widget.dart';
 import '../../notifications/view/notification_page.dart';
 import '../controller/navbar_controller.dart';
 
@@ -24,7 +25,7 @@ class _NavBarState extends State<NavBar> {
       color: AppColor.primaryColor,
       child: SafeArea(
         child: Scaffold(
-          // drawer: const DrawerWidget(),
+          drawer: const DrawerWidget(),
           extendBodyBehindAppBar: false,
           appBar: bottomNavBarController.selectedIndex.value == 0
               ? AppBar(

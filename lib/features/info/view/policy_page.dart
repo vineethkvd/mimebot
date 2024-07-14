@@ -6,14 +6,14 @@ import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart
 import '../../../core/utils/configs/styles/colors.dart';
 import '../controller/info_controller.dart';
 
-class TermsPage extends StatefulWidget {
-  const TermsPage({super.key});
+class PolicyPage extends StatefulWidget {
+  const PolicyPage({super.key});
 
   @override
-  State<TermsPage> createState() => _TermsPageState();
+  State<PolicyPage> createState() => _PolicyPageState();
 }
 
-class _TermsPageState extends State<TermsPage> {
+class _PolicyPageState extends State<PolicyPage> {
   final InfoController _controller = Get.put(InfoController());
 
   @override
@@ -40,7 +40,7 @@ class _TermsPageState extends State<TermsPage> {
             backgroundColor: AppColor.primaryColor,
             centerTitle: true,
             title: Text(
-              "Terms and condition",
+              "Privacy Policy",
               style: TextStyle(
                   fontSize: 18.sp,
                   color: AppColor.whiteColor,
@@ -92,7 +92,7 @@ class _TermsPageState extends State<TermsPage> {
     return SingleChildScrollView(
       padding: const EdgeInsets.all(8.0),
       child: HtmlWidget(
-        _controller.infoModel.value.data?.first.term ?? '',
+        _controller.infoModel.value.data?.first.privacyPolicy ?? '',
         textStyle: TextStyle(
           fontSize: 15.sp,
           fontFamily: "poppinssemibold",

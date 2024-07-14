@@ -3,19 +3,19 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-
+import '../../courses/model/all_course_model.dart';
 import '../../../core/utils/configs/styles/colors.dart';
-import '../controller/new_course_controller.dart';
-import '../model/new_course_model.dart';
+import '../../new_course/controller/new_course_controller.dart';
 
-class NewlyAddedVideo extends StatefulWidget {
-  const NewlyAddedVideo({Key? key}) : super(key: key);
+
+class AllCoursePage extends StatefulWidget {
+  const AllCoursePage({Key? key}) : super(key: key);
 
   @override
-  State<NewlyAddedVideo> createState() => _NewlyAddedVideoState();
+  State<AllCoursePage> createState() => _AllCoursePageState();
 }
 
-class _NewlyAddedVideoState extends State<NewlyAddedVideo> {
+class _AllCoursePageState extends State<AllCoursePage> {
   final NewCourseController newCourseController = Get.put(NewCourseController());
   TextEditingController searchController = TextEditingController();
   List<Data>? filteredCourses;
@@ -24,11 +24,11 @@ class _NewlyAddedVideoState extends State<NewlyAddedVideo> {
   void initState() {
     call();
     super.initState();
-    filteredCourses = newCourseController.newCourseModel.value.data;
+    filteredCourses = newCourseController.allCourseModel.value.data;
   }
 
   void call() {
-    newCourseController.fetchNewCourseVideo();
+    newCourseController.fetchAllCourse();
   }
 
   @override
@@ -53,7 +53,7 @@ class _NewlyAddedVideoState extends State<NewlyAddedVideo> {
             backgroundColor: AppColor.primaryColor,
             centerTitle: true,
             title: Text(
-              "Newly Uploaded Videos",
+              "All Courses",
               style: TextStyle(
                 fontSize: 18.sp,
                 color: AppColor.whiteColor,
@@ -249,13 +249,13 @@ class _NewlyAddedVideoState extends State<NewlyAddedVideo> {
     List<Data>? filteredList = [];
 
     if (query.isNotEmpty) {
-      filteredList = newCourseController.newCourseModel.value.data
+      filteredList = newCourseController.allCourseModel.value.data
           ?.where((course) =>
       course.corTitle?.toLowerCase().contains(query.toLowerCase()) ??
           false)
           .toList();
     } else {
-      filteredList = newCourseController.newCourseModel.value.data;
+      filteredList = newCourseController.allCourseModel.value.data;
     }
 
     setState(() {

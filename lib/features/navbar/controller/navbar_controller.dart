@@ -10,7 +10,7 @@ class NavBarController extends GetxController {
     const HomePage(),
     const SavedPage(),
     const CategoryPage(),
-    const ProfilePage(),
+     ProfilePage(),
   ];
 
   void updateIndex(int index) {

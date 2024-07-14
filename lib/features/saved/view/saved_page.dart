@@ -14,21 +14,26 @@ class SavedPage extends StatefulWidget {
 class _SavedPageState extends State<SavedPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: AppColor.primaryColor,
-        centerTitle: true,
-        title: Text("Saved",style: TextStyle(
-            fontSize: 18.sp,
+    return Container(
+      color: AppColor.primaryColor,
+      child: SafeArea(
+        child: Scaffold(
+          appBar: AppBar(
+            elevation: 0,
+            backgroundColor: AppColor.primaryColor,
+            centerTitle: true,
+            title: Text("Saved",style: TextStyle(
+                fontSize: 18.sp,
+                color: AppColor.whiteColor,
+                fontFamily: "poppinsSemiBold"),),
+          ),
+          body: Container(
+            height: Get.height,
+            width: Get.width,
             color: AppColor.whiteColor,
-            fontFamily: "poppinsSemiBold"),),
-      ),
-      body: Container(
-        height: Get.height,
-        width: Get.width,
-        color: AppColor.whiteColor,
-        child: Column(mainAxisSize: MainAxisSize.max,mainAxisAlignment: MainAxisAlignment.start,crossAxisAlignment: CrossAxisAlignment.start,children: [],),
+            child: Column(mainAxisSize: MainAxisSize.max,mainAxisAlignment: MainAxisAlignment.start,crossAxisAlignment: CrossAxisAlignment.start,children: [],),
+          ),
+        ),
       ),
     );
   }
