@@ -156,6 +156,7 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                     buttonColor: AppColor.primaryColor,
                     radius: 10.0,
                     onConfirm: () {
+                      CacheHelper.clearData("onboarding");
                       CacheHelper.clearData("regId");
                       Get.back();
                       Get.offAll(

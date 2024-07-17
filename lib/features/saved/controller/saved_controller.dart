@@ -1,26 +1,24 @@
-
 import 'dart:convert';
-
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
+import 'package:shimmer/shimmer.dart';
+import '../../../core/helpers/cache_helper/cache_helper.dart';
 import '../../../core/helpers/network/helpers/api_endpoints.dart';
 import '../../../core/helpers/network/helpers/base_client.dart';
 import '../../../core/helpers/network/helpers/base_controller.dart';
-import '../model/lessons_model.dart';
+import '../model/saved_model.dart';
 
-class LessonsController extends GetxController {
-  var lessonModel = const LessonModel().obs;
+class SavedController extends GetxController {
+  var savedModel = const SavedModel().obs;
   var isLoading = true.obs;
-  var curUrl=''.obs;
-  var curTitle=''.obs;
-  var curDescription=''.obs;
 
-  Future<void> fetchLessons({required String courseId}) async {
+  Future<void> fetchSavedVideo() async {
     final baseController = BaseController();
-    const apiUrl = ApiEndPoints.baseURL + ApiEndPoints.lesson;
+    const apiUrl = ApiEndPoints.baseURL + ApiEndPoints.savedVideo;
     const apiToken = ApiEndPoints.apiToken;
-    var requestData = {"api_key": apiToken, "course_id":courseId};
+    final regId = await CacheHelper.getData('regId');
+    var requestData = {"user_id": regId};
 
     try {
       final baseClient = BaseClient();
@@ -30,26 +28,23 @@ class LessonsController extends GetxController {
 
       if (response.statusCode == 200) {
         final responseData = json.decode(response.body);
-        lessonModel(LessonModel.fromJson(responseData));
+        savedModel(SavedModel.fromJson(responseData));
 
-        if (lessonModel.value.status == "Success") {
+        if (savedModel.value.status == true) {
           if (kDebugMode) {
             print(
-                "Success to fetch category data: ${lessonModel.value
-                    .message}");
+                "Success to fetch category data: ${savedModel.value.message}");
           }
         } else {
           throw Exception('Status is not true');
         }
       } else if (response.statusCode == 400) {
         final responseData = json.decode(response.body);
-        lessonModel(LessonModel.fromJson(responseData));
+        savedModel(SavedModel.fromJson(responseData));
 
-        if (lessonModel.value.status == "Failed") {
+        if (savedModel.value.status == false) {
           if (kDebugMode) {
-            print(
-                "Failed to fetch category data: ${lessonModel.value
-                    .message}");
+            print("Failed to fetch category data: ${savedModel.value.message}");
           }
         } else {
           throw Exception('Status is not false');

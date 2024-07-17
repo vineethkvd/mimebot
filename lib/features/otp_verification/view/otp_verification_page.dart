@@ -132,7 +132,7 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    "Enter OTP ${widget.otp}",
+                    "Enter OTP",
                     textAlign: TextAlign.left,
                     style: TextStyle(
                       fontSize: 16,

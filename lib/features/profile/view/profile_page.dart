@@ -351,6 +351,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               AppColor.primaryColor, // Set the button color
                           radius: 10.0, // Set the border radius
                           onConfirm: () {
+                            CacheHelper.clearData("onboarding");
                             CacheHelper.clearData("regId");
                             Get.back();
                             Get.offAll(

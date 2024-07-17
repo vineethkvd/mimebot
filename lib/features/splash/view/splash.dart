@@ -4,6 +4,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:mimebot/features/onboarding/view/onboarding_page.dart';
 import '../../../core/helpers/cache_helper/cache_helper.dart';
 import '../../../core/utils/configs/styles/colors.dart';
 import '../../../core/utils/shared/constants/assets_pathes.dart';
@@ -28,11 +29,15 @@ class _SplashPageState extends State<SplashPage> {
 
   void checkLoginStatus() async {
     final storedValue = await CacheHelper.getData('regId');
-    print(storedValue);
-    if (storedValue != null && storedValue.isNotEmpty) {
-      Get.offAll(const NavBar());
+    final onboarding = await CacheHelper.getData('onboarding');
+    if (onboarding != null && onboarding.isNotEmpty) {
+      if (storedValue != null && storedValue.isNotEmpty) {
+        Get.offAll(const NavBar());
+      } else {
+        Get.offAll(const LoginPage());
+      }
     } else {
-      Get.offAll(const LoginPage());
+      Get.offAll(const OnboardingPage());
     }
   }
 
@@ -42,8 +47,8 @@ class _SplashPageState extends State<SplashPage> {
         color: AppColor.primaryColor,
         child: Scaffold(
           body: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 30,vertical: 10),
-            color:AppColor.primaryColor,
+            padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+            color: AppColor.primaryColor,
             width: double.infinity,
             height: double.infinity,
             child: Column(

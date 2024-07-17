@@ -18,7 +18,7 @@ class OtpController extends GetxController {
   var isLoading = false.obs;
 
   Future<void> verifyOtp({required String emailId}) async {
-    final apiUrl = ApiEndPoints.baseURL + ApiEndPoints.editProfile;
+    const apiUrl = ApiEndPoints.baseURL + ApiEndPoints.checkOtp;
     print("api $apiUrl");
     const apiToken = ApiEndPoints.apiToken;
 
@@ -48,6 +48,7 @@ class OtpController extends GetxController {
         if (otpModel.value.status == true) {
           CustomSnackBar.showCustomSnackBar(
               message: "Success", title: '${otpModel.value.message}');
+          Get.offAll(const LoginPage(),transition: Transition.cupertino);
           if (kDebugMode) {
             print("Success: ${otpModel.value.message}");
           }

@@ -31,6 +31,8 @@ class Data with _$Data {
     @JsonKey(name: "updated_at") @Default('') String? updatedAt,
     @JsonKey(name: "created_by") @Default('') String? createdBy,
     @JsonKey(name: "updated_by") @Default('') String? updatedBy,
+    @JsonKey(name: "vid_img")  @Default('')
+    String? vidImg,
   }) = _Data;
 
   factory Data.fromJson(Map<String, dynamic> json) => _$DataFromJson(json);

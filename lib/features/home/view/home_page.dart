@@ -8,6 +8,7 @@ import 'package:shimmer/shimmer.dart';
 import '../../../core/utils/configs/styles/colors.dart';
 import '../../category/controller/category_controller.dart';
 import '../../courses/view/see_more.dart';
+import '../../lessons/view/lessons_page.dart';
 import '../../navbar/controller/navbar_controller.dart';
 import '../../navbar/view/navbar_screen.dart';
 import '../../new_course/controller/new_course_controller.dart';
@@ -110,7 +111,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                       TextButton(
                         onPressed: () {
-                          bottomNavBarController.selectedIndex.value=2;
+                          bottomNavBarController.selectedIndex.value = 2;
                           Get.to(const NavBar(),
                               transition: Transition.cupertino);
                         },
@@ -129,9 +130,9 @@ class _HomePageState extends State<HomePage> {
                     height: 160,
                     child: Obx(() {
                       if (_categoryController.isLoading.value) {
-                        return buildCourseListShimmerEffect() ;
+                        return buildCourseListShimmerEffect();
                       } else {
-                        return  buildCourseList();
+                        return buildCourseList();
                       }
                     }),
                   ),
@@ -223,80 +224,85 @@ class _HomePageState extends State<HomePage> {
       itemCount: 4,
       itemBuilder: (context, index) {
         final course = newCourses[index];
-        return Container(
-          margin: const EdgeInsets.all(8.0),
-          width: 150.w,
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(10.0),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey.withOpacity(0.3),
-                spreadRadius: 2,
-                blurRadius: 5,
-                offset: const Offset(0, 3),
-              ),
-            ],
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              ClipRRect(
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(10.0),
-                  topRight: Radius.circular(10.0),
+        return InkWell(
+          onTap: () => Get.to(LessonsPage(
+              title: course.corTitle.toString(),
+              courseId: course.corId.toString())),
+          child: Container(
+            margin: const EdgeInsets.all(8.0),
+            width: 150.w,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(10.0),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.3),
+                  spreadRadius: 2,
+                  blurRadius: 5,
+                  offset: const Offset(0, 3),
                 ),
-                child: CachedNetworkImage(
-                  imageUrl: course.corImg ?? '',
-                  height: 100.h,
-                  width: double.infinity,
-                  fit: BoxFit.cover,
-                  errorWidget: (context, url, error) => Shimmer.fromColors(
-                    baseColor: Colors.grey[300]!,
-                    highlightColor: Colors.grey[100]!,
-                    child: Container(
-                      height: 100.h,
-                      width: double.infinity,
-                      color: Colors.white,
+              ],
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                ClipRRect(
+                  borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(10.0),
+                    topRight: Radius.circular(10.0),
+                  ),
+                  child: CachedNetworkImage(
+                    imageUrl: course.corImg ?? '',
+                    height: 100.h,
+                    width: double.infinity,
+                    fit: BoxFit.cover,
+                    errorWidget: (context, url, error) => Shimmer.fromColors(
+                      baseColor: Colors.grey[300]!,
+                      highlightColor: Colors.grey[100]!,
+                      child: Container(
+                        height: 100.h,
+                        width: double.infinity,
+                        color: Colors.white,
+                      ),
+                    ),
+                    placeholder: (context, url) => Shimmer.fromColors(
+                      baseColor: Colors.grey[300]!,
+                      highlightColor: Colors.grey[100]!,
+                      child: Container(
+                        height: 100.h,
+                        width: double.infinity,
+                        color: Colors.white,
+                      ),
                     ),
                   ),
-                  placeholder: (context, url) => Shimmer.fromColors(
-                    baseColor: Colors.grey[300]!,
-                    highlightColor: Colors.grey[100]!,
-                    child: Container(
-                      height: 100.h,
-                      width: double.infinity,
-                      color: Colors.white,
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    course.corTitle ?? '',
+                    style: TextStyle(
+                      fontFamily: "poppinsSemiBold",
+                      fontSize: 14.sp,
                     ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                   ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  course.corTitle ?? '',
-                  style: TextStyle(
-                    fontFamily:  "poppinsSemiBold",
-                    fontSize: 14.sp,
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: Text(
+                    course.corDesc ?? '',
+                    style: TextStyle(
+                      fontSize: 12.sp,
+                      color: Colors.grey,
+                      fontFamily: "poppinsRegular",
+                    ),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
                   ),
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: Text(
-                  course.corDesc ?? '',
-                  style: TextStyle(
-                    fontSize: 12.sp,
-                    color: Colors.grey,
-                    fontFamily:  "poppinsRegular",
-                  ),
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ),
-            ],
+              ],
+            ),
           ),
         );
       },
@@ -376,7 +382,7 @@ class _HomePageState extends State<HomePage> {
                 child: Text(
                   course.corTitle ?? '',
                   style: TextStyle(
-                    fontFamily:  "poppinsSemiBold",
+                    fontFamily: "poppinsSemiBold",
                     fontSize: 14.sp,
                   ),
                   maxLines: 1,
@@ -390,7 +396,7 @@ class _HomePageState extends State<HomePage> {
                   style: TextStyle(
                     fontSize: 12.sp,
                     color: Colors.grey,
-                    fontFamily:  "poppinsRegular",
+                    fontFamily: "poppinsRegular",
                   ),
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
@@ -402,7 +408,6 @@ class _HomePageState extends State<HomePage> {
       },
     );
   }
-
 
   Widget buildCourseListShimmerEffect() {
     return ListView.builder(
@@ -425,6 +430,7 @@ class _HomePageState extends State<HomePage> {
       },
     );
   }
+
   Widget buildCourseList() {
     final category = _categoryController.categoryModel.value.data;
 
@@ -481,7 +487,7 @@ class _HomePageState extends State<HomePage> {
                 child: Text(
                   course.categoryName ?? '',
                   style: TextStyle(
-                 fontFamily:  "poppinsRegular",
+                    fontFamily: "poppinsRegular",
                     fontWeight: FontWeight.w400,
                     fontSize: 14,
                   ),
@@ -496,5 +502,4 @@ class _HomePageState extends State<HomePage> {
       },
     );
   }
-
 }

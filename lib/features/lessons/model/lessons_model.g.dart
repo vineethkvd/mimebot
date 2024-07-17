@@ -37,6 +37,7 @@ _$DataImpl _$$DataImplFromJson(Map<String, dynamic> json) => _$DataImpl(
       updatedAt: json['updated_at'] as String? ?? '',
       createdBy: json['created_by'] as String? ?? '',
       updatedBy: json['updated_by'] as String? ?? '',
+      vidImg: json['vid_img'] as String? ?? '',
     );
 
 Map<String, dynamic> _$$DataImplToJson(_$DataImpl instance) =>
@@ -54,4 +55,5 @@ Map<String, dynamic> _$$DataImplToJson(_$DataImpl instance) =>
       'updated_at': instance.updatedAt,
       'created_by': instance.createdBy,
       'updated_by': instance.updatedBy,
+      'vid_img': instance.vidImg,
     };

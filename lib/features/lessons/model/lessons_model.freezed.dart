@@ -244,6 +244,8 @@ mixin _$Data {
   String? get createdBy => throw _privateConstructorUsedError;
   @JsonKey(name: "updated_by")
   String? get updatedBy => throw _privateConstructorUsedError;
+  @JsonKey(name: "vid_img")
+  String? get vidImg => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -268,7 +270,8 @@ abstract class $DataCopyWith<$Res> {
       @JsonKey(name: "created_at") String? createdAt,
       @JsonKey(name: "updated_at") String? updatedAt,
       @JsonKey(name: "created_by") String? createdBy,
-      @JsonKey(name: "updated_by") String? updatedBy});
+      @JsonKey(name: "updated_by") String? updatedBy,
+      @JsonKey(name: "vid_img") String? vidImg});
 }
 
 /// @nodoc
@@ -297,6 +300,7 @@ class _$DataCopyWithImpl<$Res, $Val extends Data>
     Object? updatedAt = freezed,
     Object? createdBy = freezed,
     Object? updatedBy = freezed,
+    Object? vidImg = freezed,
   }) {
     return _then(_value.copyWith(
       corTitle: freezed == corTitle
@@ -351,6 +355,10 @@ class _$DataCopyWithImpl<$Res, $Val extends Data>
           ? _value.updatedBy
           : updatedBy // ignore: cast_nullable_to_non_nullable
               as String?,
+      vidImg: freezed == vidImg
+          ? _value.vidImg
+          : vidImg // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -375,7 +383,8 @@ abstract class _$$DataImplCopyWith<$Res> implements $DataCopyWith<$Res> {
       @JsonKey(name: "created_at") String? createdAt,
       @JsonKey(name: "updated_at") String? updatedAt,
       @JsonKey(name: "created_by") String? createdBy,
-      @JsonKey(name: "updated_by") String? updatedBy});
+      @JsonKey(name: "updated_by") String? updatedBy,
+      @JsonKey(name: "vid_img") String? vidImg});
 }
 
 /// @nodoc
@@ -401,6 +410,7 @@ class __$$DataImplCopyWithImpl<$Res>
     Object? updatedAt = freezed,
     Object? createdBy = freezed,
     Object? updatedBy = freezed,
+    Object? vidImg = freezed,
   }) {
     return _then(_$DataImpl(
       corTitle: freezed == corTitle
@@ -455,6 +465,10 @@ class __$$DataImplCopyWithImpl<$Res>
           ? _value.updatedBy
           : updatedBy // ignore: cast_nullable_to_non_nullable
               as String?,
+      vidImg: freezed == vidImg
+          ? _value.vidImg
+          : vidImg // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -475,7 +489,8 @@ class _$DataImpl implements _Data {
       @JsonKey(name: "created_at") this.createdAt = '',
       @JsonKey(name: "updated_at") this.updatedAt = '',
       @JsonKey(name: "created_by") this.createdBy = '',
-      @JsonKey(name: "updated_by") this.updatedBy = ''});
+      @JsonKey(name: "updated_by") this.updatedBy = '',
+      @JsonKey(name: "vid_img") this.vidImg = ''});
 
   factory _$DataImpl.fromJson(Map<String, dynamic> json) =>
       _$$DataImplFromJson(json);
@@ -519,10 +534,13 @@ class _$DataImpl implements _Data {
   @override
   @JsonKey(name: "updated_by")
   final String? updatedBy;
+  @override
+  @JsonKey(name: "vid_img")
+  final String? vidImg;
 
   @override
   String toString() {
-    return 'Data(corTitle: $corTitle, categoryName: $categoryName, lesId: $lesId, corId: $corId, autId: $autId, lesImg: $lesImg, lesTitle: $lesTitle, lesDesc: $lesDesc, status: $status, createdAt: $createdAt, updatedAt: $updatedAt, createdBy: $createdBy, updatedBy: $updatedBy)';
+    return 'Data(corTitle: $corTitle, categoryName: $categoryName, lesId: $lesId, corId: $corId, autId: $autId, lesImg: $lesImg, lesTitle: $lesTitle, lesDesc: $lesDesc, status: $status, createdAt: $createdAt, updatedAt: $updatedAt, createdBy: $createdBy, updatedBy: $updatedBy, vidImg: $vidImg)';
   }
 
   @override
@@ -549,7 +567,8 @@ class _$DataImpl implements _Data {
             (identical(other.createdBy, createdBy) ||
                 other.createdBy == createdBy) &&
             (identical(other.updatedBy, updatedBy) ||
-                other.updatedBy == updatedBy));
+                other.updatedBy == updatedBy) &&
+            (identical(other.vidImg, vidImg) || other.vidImg == vidImg));
   }
 
   @JsonKey(ignore: true)
@@ -568,7 +587,8 @@ class _$DataImpl implements _Data {
       createdAt,
       updatedAt,
       createdBy,
-      updatedBy);
+      updatedBy,
+      vidImg);
 
   @JsonKey(ignore: true)
   @override
@@ -598,7 +618,8 @@ abstract class _Data implements Data {
       @JsonKey(name: "created_at") final String? createdAt,
       @JsonKey(name: "updated_at") final String? updatedAt,
       @JsonKey(name: "created_by") final String? createdBy,
-      @JsonKey(name: "updated_by") final String? updatedBy}) = _$DataImpl;
+      @JsonKey(name: "updated_by") final String? updatedBy,
+      @JsonKey(name: "vid_img") final String? vidImg}) = _$DataImpl;
 
   factory _Data.fromJson(Map<String, dynamic> json) = _$DataImpl.fromJson;
 
@@ -641,6 +662,9 @@ abstract class _Data implements Data {
   @override
   @JsonKey(name: "updated_by")
   String? get updatedBy;
+  @override
+  @JsonKey(name: "vid_img")
+  String? get vidImg;
   @override
   @JsonKey(ignore: true)
   _$$DataImplCopyWith<_$DataImpl> get copyWith =>
